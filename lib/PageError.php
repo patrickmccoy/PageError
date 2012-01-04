@@ -9,7 +9,7 @@ class PageError {
           400
         , 404
         , 500
-    )
+    );
     
     public static function show($code, $uri) {
         if (in_array($code, self::$codes)) {
