@@ -5,7 +5,7 @@
  */
 
 class PageError {
-    private $codes = array(
+    public static $codes = array(
           400
         , 404
         , 500
