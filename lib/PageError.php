@@ -88,11 +88,38 @@ class PageError {
         , 509
     );
     
+    /**
+     * Send a text error code
+     *
+     * @param $code - the error code to send
+     * @param $uri - the uri which generated the error code
+     * @param $message - the message to send with the response, @default false
+     */
     public static function show($code, $uri) {
         if (in_array($code, self::$codes)) {
             echo 'Error code '. $code .' ('. self::$messages[$code] .') for url: '. $uri;
         } else {
             echo 'No error!';
         }
+    }
+    
+    /**
+     * Send a JSON object error code
+     *
+     * @param $code - the error code to send
+     * @param $uri - the uri which generated the error code
+     * @param $details - the detailed message to send with the response, @default false
+     * @return string - the error code packaged into a json object
+     */
+    public static function showJSON($code, $uri, $details = false) {
+        $response = array();
+        if (in_array($code, self::$codes)) {
+            $response['code'] = $code;
+            $response['msg'] = self::$messages[$code];
+            $response['uri'] = $uri;
+            $response['details'] = ($details && is_string($details)) ? $details : $details;
+        }
+        
+        return json_encode($response);
     }
 }
