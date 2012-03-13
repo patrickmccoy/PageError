@@ -12,6 +12,7 @@ Call `PageError::show($code, $uri)` to echo out an error message with the proper
 ### JSON
 
 Call `PageError::showJSON($code, $uri, $details)` to get a JSON Object returned in the following format:
+
 ```javascript
 {
     "code": $code
