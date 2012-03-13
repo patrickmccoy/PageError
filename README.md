@@ -19,3 +19,4 @@ Call `PageError::showJSON($code, $uri, $details)` to get a JSON Object returned 
     "uri": $uri
     "details": $details
 }
+```
