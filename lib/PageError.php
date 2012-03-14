@@ -5,7 +5,7 @@
  */
 
 class PageError {
-    
+
     /**
      * List of all known HTTP response codes - used to
      * translate numeric codes to messages.
@@ -65,7 +65,7 @@ class PageError {
         505 => 'HTTP Version Not Supported',
         509 => 'Bandwidth Limit Exceeded'
     );
-    
+
     /**
      * List of all acceptable HTTP response codes - used to
      * check the passed error code is handled by the class
@@ -87,7 +87,7 @@ class PageError {
         , 503
         , 509
     );
-    
+
     /**
      * Send a text error code
      *
@@ -102,7 +102,7 @@ class PageError {
             echo 'No error!';
         }
     }
-    
+
     /**
      * Send a JSON object error code
      *
@@ -111,7 +111,19 @@ class PageError {
      * @param $details - the detailed message to send with the response, @default false
      * @return string - the error code packaged into a json object
      */
-    public static function showJSON($code, $uri, $details = false) {
+    public static function returnJSON($code, $uri, $details = false) {
+        return json_encode(self::returnArray($code, $uri, $details));
+    }
+
+    /**
+     * Return an array with error code
+     *
+     * @param $code - the error code to send
+     * @param $uri - the uri which generated the error code
+     * @param $details - the detailed message to send with the response, @default false
+     * @return array - the error code packaged into a array
+     */
+    public static function returnArray($code, $uri, $details = false) {
         $response = array();
         if (in_array($code, self::$codes)) {
             $response['code'] = $code;
@@ -119,7 +131,7 @@ class PageError {
             $response['uri'] = $uri;
             $response['details'] = ($details && is_string($details)) ? $details : $details;
         }
-        
-        return json_encode($response);
+
+        return $response;
     }
 }
