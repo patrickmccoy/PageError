@@ -3,6 +3,8 @@
 
 Custom error page class
 
+[![Build Status](https://travis-ci.org/patrickmccoy/PageError.png)](https://travis-ci.org/patrickmccoy/PageError)
+
 ## Usage
 
 ### Standard
