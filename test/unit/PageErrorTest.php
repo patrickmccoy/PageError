@@ -1,5 +1,4 @@
 <?php
-require_once dirname(__FILE__) .'/../PageError.php';
 
 class PageErrorTest extends PHPUnit_Framework_TestCase {
 
